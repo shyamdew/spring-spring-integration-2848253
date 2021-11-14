@@ -11,7 +11,7 @@
     <!-- Configure Spring Integration Tech Support message flow here -->
 
     <!-- DirectChannel example (Subscribable) -->
-    <int:channel id="techSupportChannel" />
+    <int:publish-subscribe-channel id="techSupportChannel" />
 
     <!-- QueueChannel example (Pollable) -->
     <int:channel id="updateNotificationQueueChannel">

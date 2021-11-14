@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.integration.channel.AbstractPollableChannel;
 import org.springframework.integration.channel.AbstractSubscribableChannel;
 import org.springframework.integration.channel.DirectChannel;
+import org.springframework.integration.channel.PublishSubscribeChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.messaging.support.GenericMessage;
 
@@ -28,7 +29,7 @@ public class ViewService {
         // Initialize our updateNotificationChannel
         updateNotificationChannel = (QueueChannel) DashboardManager.getDashboardContext().getBean("updateNotificationQueueChannel");
 
-        techSupportChannel = (DirectChannel) DashboardManager.getDashboardContext().getBean("techSupportChannel");
+        techSupportChannel =  (PublishSubscribeChannel)DashboardManager.getDashboardContext().getBean("techSupportChannel");
         techSupportChannel.subscribe(new ViewMessageHandler());
         this.start();
     }
